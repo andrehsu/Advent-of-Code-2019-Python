@@ -3,7 +3,7 @@ from adventofcode.utils import read_input
 INPUT = read_input(1)
 
 
-def fuel_cost(mass):
+def fuel_cost(mass) -> int:
     fuel = mass // 3 - 2
 
     if fuel < 0:
@@ -12,7 +12,7 @@ def fuel_cost(mass):
         return fuel + fuel_cost(fuel)
 
 
-def part1(input_):
+def part1(input_: list[str]) -> int:
     fuel = 0
     for line in input_:
         mass = int(line)
@@ -21,7 +21,7 @@ def part1(input_):
     return fuel
 
 
-def part2(input_):
+def part2(input_: list[str]) -> int:
     fuel = 0
     for row in input_:
         mass = int(row)
@@ -30,7 +30,7 @@ def part2(input_):
     return fuel
 
 
-def day1(input_):
+def day1(input_: list[str]) -> None:
     print(part1(input_))
     print(part2(input_))
 

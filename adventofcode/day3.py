@@ -2,20 +2,23 @@ from utils import read_input
 
 INPUT = read_input(3)
 
+Point = tuple[int, int]
+WirePoints = dict[Point, int]
 
-def part1(wire1, wire2):
-    def dist(point):
+
+def part1(wire1: WirePoints, wire2: WirePoints) -> int:
+    def dist(point: Point) -> int:
         x, y = point
         return abs(x) + abs(y)
 
     return min(map(dist, set(wire1.keys()).intersection(wire2)))
 
 
-def part2(wire1, wire2):
+def part2(wire1: WirePoints, wire2: WirePoints) -> int:
     return min(wire1[point] + wire2[point] for point in set(wire1.keys()).intersection(wire2.keys()))
 
 
-def get_wire_points(wire_str):
+def get_wire_points(wire_str: str) -> WirePoints:
     points = {}
     x = 0
     y = 0
@@ -45,7 +48,7 @@ def get_wire_points(wire_str):
     return points
 
 
-def day3(input_):
+def day3(input_: list[str]) -> None:
     wire1 = get_wire_points(input_[0])
     wire2 = get_wire_points(input_[1])
 
