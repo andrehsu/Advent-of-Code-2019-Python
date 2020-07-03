@@ -18,12 +18,12 @@ def part2(wire1_points, wire2_points):
     wire1_keys = set(wire1_points.keys())
     wire2_keys = set(wire2_points.keys())
 
-    step_counts = []
+    intersection_steps = []
 
     for point in wire1_keys.intersection(wire2_keys):
-        step_counts.append(wire1_points[point] + wire2_points[point])
+        intersection_steps.append(wire1_points[point] + wire2_points[point])
 
-    return min(step_counts)
+    return min(intersection_steps)
 
 
 def get_wire_points(wire_str):
@@ -33,16 +33,16 @@ def get_wire_points(wire_str):
     i_step = 0
 
     for step in wire_str.split(','):
-        d = step[0]
+        direction = step[0]
         dist = int(step[1:])
         for _ in range(dist):
-            if d == 'U':
+            if direction == 'U':
                 y += 1
-            elif d == 'D':
+            elif direction == 'D':
                 y -= 1
-            elif d == 'L':
+            elif direction == 'L':
                 x -= 1
-            elif d == 'R':
+            elif direction == 'R':
                 x += 1
             else:
                 raise RuntimeError('Unknown direction')
