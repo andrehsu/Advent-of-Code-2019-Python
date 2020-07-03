@@ -33,16 +33,16 @@ def get_wire_points(wire_str):
     i_step = 0
 
     for step in wire_str.split(','):
-        d = step[0]
+        direction = step[0]
         dist = int(step[1:])
         for _ in range(dist):
-            if d == 'U':
+            if direction == 'U':
                 y += 1
-            elif d == 'D':
+            elif direction == 'D':
                 y -= 1
-            elif d == 'L':
+            elif direction == 'L':
                 x -= 1
-            elif d == 'R':
+            elif direction == 'R':
                 x += 1
             else:
                 raise RuntimeError('Unknown direction')
