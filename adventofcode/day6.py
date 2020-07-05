@@ -29,12 +29,7 @@ class Planet:
 def part1(input_: List[str]) -> int:
     planets = parse_planets(input_)
     
-    count = 0
-    
-    for planet in planets.values():
-        count += planet.level()
-    
-    return count
+    return sum(planet.level() for planet in planets.values())
 
 
 def part2(input_: List[str]) -> int:
