@@ -43,9 +43,9 @@ def is_visible(asteroids: List[Pos], a: Pos, b: Pos) -> bool:
 
 
 def part1(inp: List[str]) -> None:
-    map = parse_map(inp)
-    
-    asteroids = [(r, c) for r, row in enumerate(map) for c, v in enumerate(row) if v]
+    space_map = parse_map(inp)
+
+    asteroids = [(r, c) for r, row in enumerate(space_map) for c, v in enumerate(row) if v]
     
     visible = {}
     
