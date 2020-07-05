@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import List, Dict
 
 from utils import read_input
 
@@ -7,7 +8,7 @@ INPUT = read_input(6)
 
 @dataclass(frozen=True)
 class Planet:
-    _planets: dict[str, 'Planet']
+    _planets: Dict[str, 'Planet']
     _parent_name: str
     name: str
 
@@ -25,25 +26,25 @@ class Planet:
             return 1
 
 
-def part1(input_: list[str]) -> int:
+def part1(input_: List[str]) -> int:
     planets = parse_planets(input_)
-
+    
     count = 0
-
+    
     for planet in planets.values():
         count += planet.level()
-
+    
     return count
 
 
-def part2(input_: list[str]) -> int:
+def part2(input_: List[str]) -> int:
     planets = parse_planets(input_)
-
+    
     steps = 0
-
+    
     you_parent = planets['YOU'].parent
     san_parent = planets['SAN'].parent
-
+    
     while you_parent != san_parent:
         while you_parent.level() > san_parent.level():
             you_parent = you_parent.parent
@@ -59,13 +60,13 @@ def part2(input_: list[str]) -> int:
     return steps
 
 
-def parse_planets(input_: list[str]) -> dict[str, Planet]:
+def parse_planets(input_: List[str]) -> Dict[str, Planet]:
     planets = {}
-
+    
     for row in input_:
         parent, child = row.split(')')
         planets[child] = Planet(planets, parent, child)
-
+    
     return planets
 
 

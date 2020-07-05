@@ -1,9 +1,11 @@
+from typing import Tuple
+
 from utils import read_input
 
 INPUT = read_input(5)[0]
 
 
-def parse_instruction(instruction: int) -> tuple[int, int, int, int]:
+def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:
     return (instruction % 100 // 1,
             instruction % 1000 // 100,
             instruction % 10000 // 1000,

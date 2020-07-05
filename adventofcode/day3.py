@@ -1,16 +1,18 @@
+from typing import Tuple, Dict, List
+
 from utils import read_input
 
 INPUT = read_input(3)
 
-Point = tuple[int, int]
-WirePoints = dict[Point, int]
+Point = Tuple[int, int]
+WirePoints = Dict[Point, int]
 
 
 def part1(wire1: WirePoints, wire2: WirePoints) -> int:
     def dist(point: Point) -> int:
         x, y = point
         return abs(x) + abs(y)
-
+    
     return min(map(dist, set(wire1.keys()).intersection(wire2)))
 
 
@@ -48,10 +50,10 @@ def get_wire_points(wire_str: str) -> WirePoints:
     return points
 
 
-def day3(input_: list[str]) -> None:
+def day3(input_: List[str]) -> None:
     wire1 = get_wire_points(input_[0])
     wire2 = get_wire_points(input_[1])
-
+    
     print(part1(wire1, wire2))
     print(part2(wire1, wire2))
 
