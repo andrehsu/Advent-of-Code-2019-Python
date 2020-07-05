@@ -13,8 +13,8 @@ def parse_map(inp: List[str]) -> Map:
     return [[i == '#' for i in row] for row in inp]
 
 
-def print_map(map: Map) -> None:
-    for row in map:
+def print_map(space_map: Map) -> None:
+    for row in space_map:
         for i in row:
             if i:
                 print('#', end='')
