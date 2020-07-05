@@ -2,8 +2,6 @@ from utils import read_input
 
 INPUT = read_input(5)[0]
 
-Memory = list[int]
-
 
 def parse_instruction(instruction: int) -> tuple[int, int, int, int]:
     return (instruction % 100 // 1,
@@ -14,23 +12,21 @@ def parse_instruction(instruction: int) -> tuple[int, int, int, int]:
 
 def program(input_, id_: int) -> None:
     mem = list(map(int, input_.split(',')))
-    
+
     def param(num: int) -> int:
         return mem[i + num]
-    
+
+    def param_value(param_num: int) -> int:
+        p = param(param_num)
+        return p if modes[param_num - 1] == 1 else mem[p]
+
     i = 0
     while True:
         opcode, *modes = parse_instruction(mem[i])
-        
-        def param_value(param_num: int) -> int:
-            param_value = param(param_num)
-            return param_value if modes[param_num - 1] == 1 else mem[param_value]
-        
-        before_instruction = mem[i]
-        
+    
         if opcode == 1:
             mem[param(3)] = param_value(1) + param_value(2)
-            
+        
             assert modes[2] == 0
             
             i += 4
