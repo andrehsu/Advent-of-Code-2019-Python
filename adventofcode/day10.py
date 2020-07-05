@@ -1,8 +1,5 @@
-import math
 import time
 from typing import List, Tuple
-
-import numba
 
 from utils import read_input, test_case
 
@@ -26,18 +23,14 @@ def print_map(map: Map) -> None:
         print()
 
 
-@numba.njit()
-def dist(a, b) -> float:
-    return math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2)
-
-
-def in_between(a, b, c) -> bool:
-    return math.isclose(dist(a, b), (dist(a, c) + dist(b, c))) and a != b and b != c and a != c
-
-
 def is_visible(asteroids: List[Pos], a: Pos, b: Pos) -> bool:
     for c in asteroids:
-        if in_between(a, b, c):
+        if (
+                (a[0] <= c[0] <= b[0] or a[0] >= c[0] >= b[0]) and
+                (a[1] <= c[1] <= b[1] or a[1] >= c[1] >= b[1]) and
+                (c[1] - a[1]) * (b[0] - a[0]) - (c[0] - a[0]) * (b[1] - a[1]) == 0 and
+                a != b and b != c and a != c
+        ):
             return False
     return True
 
