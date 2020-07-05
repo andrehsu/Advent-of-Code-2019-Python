@@ -32,9 +32,6 @@ def part2(input_: List[str]) -> int:
     return fuel
 
 
-def day1(input_: List[str]) -> None:
-    print(part1(input_))
-    print(part2(input_))
-
-
-day1(INPUT)
+if __name__ == '__main__':
+    print(part1(INPUT))
+    print(part2(INPUT))

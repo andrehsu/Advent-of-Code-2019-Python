@@ -25,10 +25,10 @@ def program(input_, id_: int) -> None:
     i = 0
     while True:
         opcode, *modes = parse_instruction(mem[i])
-    
+
         if opcode == 1:
             mem[param(3)] = param_value(1) + param_value(2)
-        
+
             assert modes[2] == 0
             
             i += 4
@@ -77,11 +77,6 @@ def program(input_, id_: int) -> None:
             raise RuntimeError(f"Unexpected opcode: {opcode}")
 
 
-def day5(input_: str):
-    part1(input_)
-    part2(input_)
-
-
 def part1(input_):
     program(input_, 1)
 
@@ -90,4 +85,6 @@ def part2(input_):
     program(input_, 5)
 
 
-day5(INPUT)
+if __name__ == '__main__':
+    part1(INPUT)
+    part2(INPUT)

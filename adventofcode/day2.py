@@ -45,10 +45,7 @@ def part2(mem):
                 return noun * 100 + verb
 
 
-def day2(input_: str):
-    mem = list(map(int, input_.split(',')))
+if __name__ == '__main__':
+    mem = list(map(int, INPUT.split(',')))
     print(part1(mem))
     print(part2(mem))
-
-
-day2(INPUT)

@@ -1,4 +1,4 @@
-from typing import Tuple, Dict, List
+from typing import Tuple, Dict
 
 from utils import read_input
 
@@ -50,15 +50,8 @@ def get_wire_points(wire_str: str) -> WirePoints:
     return points
 
 
-def day3(input_: List[str]) -> None:
-    wire1 = get_wire_points(input_[0])
-    wire2 = get_wire_points(input_[1])
-    
+if __name__ == '__main__':
+    wire1 = get_wire_points(INPUT[0])
+    wire2 = get_wire_points(INPUT[1])
     print(part1(wire1, wire2))
     print(part2(wire1, wire2))
-
-
-day3(["R8,U5,L5,D3", "U7,R6,D4,L4"])
-day3(["R75,D30,R83,U83,L12,D49,R71,U7,L72", "U62,R66,U55,R34,D71,R55,D58,R83"])
-
-day3(INPUT)

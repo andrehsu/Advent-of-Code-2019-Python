@@ -13,15 +13,6 @@ def is_increasing(num):
     return True
 
 
-count = 0
-
-for i in range(lo, hi + 1):
-    if re.findall(r'(.)\1', str(i)) and is_increasing(i):
-        count += 1
-
-print(count)
-
-
 def has_isolate_group(i):
     s = '_' + str(i) + '_'
 
@@ -32,10 +23,19 @@ def has_isolate_group(i):
     return False
 
 
-count = 0
-
-for i in range(lo, hi + 1):
-    if has_isolate_group(i) and is_increasing(i):
-        count += 1
-
-print(count)
+if __name__ == '__main__':
+    count = 0
+    
+    for i in range(lo, hi + 1):
+        if re.findall(r'(.)\1', str(i)) and is_increasing(i):
+            count += 1
+    
+    print(count)
+    
+    count = 0
+    
+    for i in range(lo, hi + 1):
+        if has_isolate_group(i) and is_increasing(i):
+            count += 1
+    
+    print(count)
