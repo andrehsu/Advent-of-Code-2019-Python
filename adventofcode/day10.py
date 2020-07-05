@@ -23,12 +23,19 @@ def print_map(space_map: Map) -> None:
         print()
 
 
+def cross_product(ax, ay, bx, by, cx, cy):
+    return (cy - ay) * (bx - ax) - (cx - ax) * (by - ay)
+
+
 def is_visible(asteroids: List[Pos], a: Pos, b: Pos) -> bool:
+    ax, ay = a
+    bx, by = b
     for c in asteroids:
+        cx, cy = c
         if (
-                (a[0] <= c[0] <= b[0] or a[0] >= c[0] >= b[0]) and
-                (a[1] <= c[1] <= b[1] or a[1] >= c[1] >= b[1]) and
-                (c[1] - a[1]) * (b[0] - a[0]) - (c[0] - a[0]) * (b[1] - a[1]) == 0 and
+                cross_product(ax, ay, bx, by, cx, cy) == 0 and
+                (ax <= cx <= bx or ax >= cx >= bx) and
+                (ay <= cy <= by or ay >= cy >= by) and
                 a != b and b != c and a != c
         ):
             return False
@@ -97,4 +104,4 @@ if __name__ == '__main__':
     start = time.time()
     part1(INPUT)
     end = time.time()
-    print(f'Elapsed: {end - start}')
+    print(f'Elapsed: {end - start:.2f}')
