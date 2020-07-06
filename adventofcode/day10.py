@@ -1,4 +1,3 @@
-import time
 from typing import List, Tuple
 
 from utils import read_input, test_case
@@ -23,21 +22,15 @@ def print_map(space_map: Map) -> None:
         print()
 
 
-def cross_product(ax, ay, bx, by, cx, cy):
-    return (cy - ay) * (bx - ax) - (cx - ax) * (by - ay)
-
-
 def is_visible(asteroids: List[Pos], a: Pos, b: Pos) -> bool:
     ax, ay = a
     bx, by = b
     for c in asteroids:
         cx, cy = c
-        if (
-                cross_product(ax, ay, bx, by, cx, cy) == 0 and
+        if ((cy - ay) * (bx - ax) - (cx - ax) * (by - ay) == 0 and
                 (ax <= cx <= bx or ax >= cx >= bx) and
                 (ay <= cy <= by or ay >= cy >= by) and
-                a != b and b != c and a != c
-        ):
+                len({a, b, c}) == 3):
             return False
     return True
 
@@ -101,7 +94,4 @@ test1 = test_case('''
 if __name__ == '__main__':
     # part1(test0)
     # part1(test1)
-    start = time.time()
     part1(INPUT)
-    end = time.time()
-    print(f'Elapsed: {end - start:.2f}')
