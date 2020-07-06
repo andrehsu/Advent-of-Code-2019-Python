@@ -39,7 +39,7 @@ def part1(inp: List[str]) -> None:
     space_map = parse_map(inp)
 
     asteroids = [(r, c) for r, row in enumerate(space_map) for c, v in enumerate(row) if v]
-    
+
     visible = {}
     
     for a in asteroids:
