@@ -25,19 +25,26 @@ class Amplifier:
 
         def param(num: int) -> int:
             return self.mem[self.i + num]
-        
+
         def param_value(param_num: int) -> int:
             p = param(param_num)
-            return p if modes[param_num - 1] == 1 else self.mem[p]
+    
+            mode = modes[param_num - 1]
+            if mode == 0:
+                return self.mem[p]
+            elif mode == 1:
+                return p
+            else:
+                raise RuntimeError('Unrecognized mode')
 
         while True:
             opcode, *modes = parse_instruction(self.mem[self.i])
-            
+    
             if opcode == 1:
                 self.mem[param(3)] = param_value(1) + param_value(2)
-                
+        
                 assert modes[2] == 0
-
+        
                 self.i += 4
             elif opcode == 2:
                 self.mem[param(3)] = param_value(1) * param_value(2)
