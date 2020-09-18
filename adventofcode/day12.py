@@ -4,9 +4,9 @@ from dataclasses import dataclass
 from itertools import combinations
 from typing import List
 
-from utils import read_input, test_case
+from utils import read_input_lines, test_case
 
-INPUT = read_input(12)
+INPUT = read_input_lines(12)
 
 
 @dataclass

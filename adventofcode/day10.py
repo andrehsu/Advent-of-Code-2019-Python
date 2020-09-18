@@ -4,9 +4,9 @@ from functools import lru_cache
 from operator import itemgetter
 from typing import List, Tuple
 
-from utils import read_input, test_case
+from utils import read_input_lines, test_case
 
-INPUT = read_input(10)
+INPUT = read_input_lines(10)
 
 Pos = Tuple[int, int]
 

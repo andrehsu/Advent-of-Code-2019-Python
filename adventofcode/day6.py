@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Dict
 
-from utils import read_input
+from utils import read_input_lines
 
-INPUT = read_input(6)
+INPUT = read_input_lines(6)
 
 
 @dataclass(frozen=True)

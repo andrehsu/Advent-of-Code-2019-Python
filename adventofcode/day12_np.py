@@ -3,9 +3,9 @@ from typing import List
 
 import numpy as np
 
-from utils import read_input, test_case
+from utils import read_input_lines, test_case
 
-INPUT = read_input(12)
+INPUT = read_input_lines(12)
 
 
 def parse_input(inp: List[str]) -> np.ndarray:

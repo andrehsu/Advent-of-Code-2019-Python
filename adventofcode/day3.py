@@ -1,8 +1,8 @@
 from typing import Tuple, Dict
 
-from utils import read_input
+from utils import read_input_lines
 
-INPUT = read_input(3)
+INPUT = read_input_lines(3)
 
 Point = Tuple[int, int]
 WirePoints = Dict[Point, int]
