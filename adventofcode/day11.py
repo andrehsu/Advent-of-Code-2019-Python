@@ -9,13 +9,6 @@ INPUT = read_input_lines(11)[0]
 Pos = Tuple[int, int]
 
 
-def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:
-    return (instruction % 100 // 1,
-            instruction % 1000 // 100,
-            instruction % 10000 // 1000,
-            instruction % 100000 // 10000)
-
-
 class Bot:
     def __init__(self, code: str):
         self.mem = defaultdict(lambda: 0, ((i, int(value)) for i, value in enumerate(code.split(','))))
@@ -26,15 +19,22 @@ class Bot:
         self.i = 0
         self.rb = 0
         self.y = 0
-    
+
+    @staticmethod
+    def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:
+        return (instruction % 100 // 1,
+                instruction % 1000 // 100,
+                instruction % 10000 // 1000,
+                instruction % 100000 // 10000)
+
     @property
     def pos_color(self) -> int:
         return self.hull[self.pos]
-    
+
     @pos_color.setter
     def pos_color(self, value: int) -> None:
         self.hull[self.pos] = value
-    
+
     @property
     def pos(self) -> Pos:
         return self.x, self.y
@@ -101,7 +101,7 @@ class Bot:
                 raise RuntimeError(f'Unexpected mode: {mode}')
         
         while True:
-            opcode, *modes = parse_instruction(self.mem[self.i])
+            opcode, *modes = Bot.parse_instruction(self.mem[self.i])
             
             if opcode == 1:
                 param_write(3, param_read(1) + param_read(2))
