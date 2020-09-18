@@ -6,7 +6,7 @@ from typing import List
 
 from utils import read_input_lines, test_case
 
-INPUT = read_input_lines(12)
+INPUT = read_input_lines('day12')
 
 
 @dataclass

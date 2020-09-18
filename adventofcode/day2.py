@@ -1,6 +1,6 @@
-from utils import read_input_lines
+from utils import read_input
 
-INPUT = read_input_lines(2)[0]
+INPUT = read_input('day2')
 
 
 def program(mem, noun, verb):

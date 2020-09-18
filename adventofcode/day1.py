@@ -2,7 +2,7 @@ from typing import List
 
 from adventofcode.utils import read_input_lines
 
-INPUT = read_input_lines(1)
+INPUT = read_input_lines('day1')
 
 
 def fuel_cost(mass) -> int:

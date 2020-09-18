@@ -1,8 +1,8 @@
 from collections import Counter, deque
 
-from utils import read_input_lines
+from utils import read_input
 
-INPUT = read_input_lines(8)[0]
+INPUT = read_input('day8')
 
 
 def part1(inp: str) -> None:

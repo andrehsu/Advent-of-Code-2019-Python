@@ -2,9 +2,9 @@ from collections import defaultdict
 from operator import itemgetter
 from typing import Tuple, Optional, Dict, Set
 
-from utils import read_input_lines
+from utils import read_input
 
-INPUT = read_input_lines(11)[0]
+INPUT = read_input('day11')
 
 Pos = Tuple[int, int]
 

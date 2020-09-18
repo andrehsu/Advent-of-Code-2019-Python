@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from utils import read_input_lines, test_case
 
-INPUT = read_input_lines(10)
+INPUT = read_input_lines('day10')
 
 Pos = Tuple[int, int]
 

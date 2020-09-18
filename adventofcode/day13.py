@@ -5,7 +5,7 @@ from utils import read_input
 
 Pos = Tuple[int, int]
 
-INPUT = read_input(13)
+INPUT = read_input('day13')
 
 
 class Arcade:

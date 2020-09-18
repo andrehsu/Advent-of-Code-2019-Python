@@ -3,7 +3,7 @@ from typing import List, Dict
 
 from utils import read_input_lines
 
-INPUT = read_input_lines(6)
+INPUT = read_input_lines('day6')
 
 
 @dataclass(frozen=True)

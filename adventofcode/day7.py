@@ -1,9 +1,9 @@
 from itertools import permutations
 from typing import Optional, Tuple
 
-from utils import read_input_lines
+from utils import read_input
 
-INPUT = read_input_lines(7)[0]
+INPUT = read_input('day7')
 
 
 def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:

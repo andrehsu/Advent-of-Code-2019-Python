@@ -1,9 +1,9 @@
 from collections import defaultdict
 from typing import Tuple
 
-from utils import read_input_lines
+from utils import read_input
 
-INPUT = read_input_lines(9)[0]
+INPUT = read_input('day9')
 
 
 def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:
