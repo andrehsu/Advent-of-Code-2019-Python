@@ -15,6 +15,7 @@ class Arcade:
         self.i = 0
         self.rb = 0
         self.score = -1
+        self.tilt = 0
     
     @staticmethod
     def parse_instruction(instruction: int) -> Tuple[int, int, int, int]:
@@ -29,20 +30,39 @@ class Arcade:
             
             if ret is None:
                 return
-            
+
             x = ret
             y = self._resume()
             tile_id = self._resume()
-            
+
             if x == -1 and y == 0:
                 self.score = tile_id
             else:
                 self.screen[(x, y)] = tile_id
-    
+                try:
+                    x_ball, y_ball = self.get_tile_id_pos(4)
+                    x_paddle, y_paddle = self.get_tile_id_pos(3)
+                    if x_ball == x_paddle:
+                        self.tilt = 0
+                    elif x_ball > x_paddle:
+                        self.tilt = 1
+                    else:
+                        self.tilt = -1
+                except RuntimeError:
+                    pass
+
+    def get_tile_id_pos(self, tile_id: int) -> Pos:
+        if tile_id not in self.screen.values():
+            raise RuntimeError('No tile id')
+        else:
+            for pos, _tile_id in self.screen.items():
+                if _tile_id == tile_id:
+                    return pos
+
     def _resume(self) -> Optional[int]:
         def param(num: int) -> int:
             return self.mem[self.i + num]
-        
+    
         def param_read(param_num: int) -> int:
             p = param(param_num)
             mode = modes[param_num - 1]
@@ -80,11 +100,9 @@ class Arcade:
                 
                 self.i += 4
             elif opcode == 3:
-                raise NotImplementedError('Input not implemented')
-                
-                # param_write(1, inp)
-                
-                # self.i += 2
+                param_write(1, self.tilt)
+    
+                self.i += 2
             elif opcode == 4:
                 ret = param_read(1)
                 
@@ -133,7 +151,10 @@ def part1(inp: str) -> None:
 def part2(inp: str) -> None:
     arcade = Arcade(inp)
     arcade.mem[0] = 2
+    arcade.run()
+    print(arcade.score)
 
 
 if __name__ == '__main__':
     part1(INPUT)
+    part2(INPUT)
