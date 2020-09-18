@@ -7,6 +7,8 @@ verify_ssl = true
 ipython = "*"
 
 [packages]
+numpy = "*"
+numba = "*"
 
 [requires]
 python_version = "3.8"
